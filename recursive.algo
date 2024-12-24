@@ -1,0 +1,109 @@
+// LEAP YEAR CALCULATOR
+
+ALGORITHM LeapYearChecker
+    INPUT: year (integer)
+    OUTPUT: "Is a Leap Year" or "Not a Leap Year"
+
+    BEGIN
+        IF year MOD 4 = 0 THEN
+            IF year MOD 100 = 0 THEN
+                IF year MOD 400 = 0 THEN
+                    RETURN "Leap Year"
+                ELSE
+                    RETURN "Not a Leap Year"
+                ENDIF
+            ELSE
+                RETURN "Leap Year"
+            ENDIF
+        ELSE
+            RETURN "Not a Leap Year"
+        ENDIF
+    END
+END ALGORITHM
+
+
+// TICKET PRICING ALGORITHM
+ALGORITHM TicketPricing
+    INPUT: age (integer)
+    OUTPUT: ticketPrice (integer)
+
+    BEGIN
+        IF age <= 12 THEN
+            RETURN 10  // Children: $10
+        ELSE IF age >= 13 AND age <= 17 THEN
+            RETURN 15  // Teenagers: $15
+        ELSE IF age >= 18 THEN
+            RETURN 20  // Adults: $20
+        ENDIF
+    END
+END ALGORITHM
+
+// WEATHER ADVISORY
+ALGORITHM WeatherAdvisory
+  INPUT: weatherConditions (string)
+  OUTPUT: clothingAdvise (string)
+
+  BEGIN
+      IF weather = "sunny" THEN
+          RETURN "put on light clothing"
+      ELSE IF weather = "windy" THEN
+          RETURN "put on a sweater"
+      ELSE IF weather = "rainy" THEN
+          RETURN "carry an umbrella"
+      ELSE 
+          RETURN "do whatever you want"
+      ENDIF
+  END
+END ALGORITHM
+
+// Palindrome Checker.
+ALGORITHM PalindromeCheckerRecursive
+    INPUT: text (string)
+    OUTPUT: isPalindrome (boolean)
+
+    BEGIN
+        // Step 1: Convert the string to lowercase and remove non-alphanumeric characters
+        text <- RemoveNonAlphanumeric(text)
+        text <- ToLowerCase(text)
+
+        // Step 2: Call the recursive function to check palindrome
+        RETURN IsPalindromeHelper(text, 0, Length(text) - 1)
+    END
+
+
+ALGORITHM IsPalindromeHelper
+    INPUT: text (string), left (integer), right (integer)
+    OUTPUT: isPalindrome (boolean)
+
+    BEGIN
+        // Base Case 1: If left and right pointers cross, it's a palindrome
+        IF left >= right THEN
+            RETURN True
+        ENDIF
+
+        // Base Case 2: If characters don't match, it's not a palindrome
+        IF text[left] != text[right] THEN
+            RETURN False
+        ENDIF
+
+        // Recursive Case: Move the pointers towards the center
+        RETURN IsPalindromeHelper(text, left + 1, right - 1)
+    END
+
+
+// Power Functions.
+ALGORITHM PowerFunction
+    INPUT: base (integer), exponent (integer)
+    OUTPUT: result (integer)
+
+    BEGIN
+        // Check if the exponent is 0
+        IF exponent = 0 THEN
+            RETURN 1
+        ENDIF
+
+        // Recursive case: Multiply base by the result of base(exponent - 1)
+        RETURN base * PowerFunction(base, exponent - 1)
+    END
+
+
